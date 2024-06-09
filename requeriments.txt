@@ -1,2 +1,4 @@
 fastapi
 sqlalchemy
+pydantic-settings
+pydantic
