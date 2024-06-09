@@ -6,4 +6,8 @@ Base.metadata.create_all(engine)
 
 app = FastAPI()
 
+@app.get('/')
+def home():
+    return {'message': 'Hello World'}
+
 app.include_router(user_routes)
