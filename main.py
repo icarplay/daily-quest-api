@@ -1,13 +1,6 @@
-from fastapi import FastAPI
-from daily_quest_api.controllers import user_routes
-from daily_quest_api.database import Base, engine
+from os import getenv
+import uvicorn
 
-Base.metadata.create_all(engine)
-
-app = FastAPI()
-
-@app.get('/')
-def home():
-    return {'message': 'Hello World'}
-
-app.include_router(user_routes)
+if __name__ == '__main__':
+    port = int(getenv('PORT', 8000))
+    uvicorn.run('daily_quest_api.api:app', host='0.0.0.0', port=port, reload=True)
