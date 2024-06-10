@@ -1,14 +1,9 @@
+from daily_quest_api.core.settings import Settings
 from pymongo import MongoClient
-from decouple import config
-import os
 
-DB_USER = config('USER') if os.environ.get('USER') is None else os.environ.get('USER')
-DB_PASSWORD = config('PASSWORD') if os.environ.get('PASSWORD') is None else os.environ.get('PASSWORD')
-DB_HOST = config('HOST') if os.environ.get('HOST') is None else os.environ.get('HOST')
-SECRET_KEY = config('SECRET_KEY') if os.environ.get('SECRET_KEY') is None else os.environ.get('SECRET_KEY')
-DB_NAME = config('DB_NAME') if os.environ.get('DB_NAME') is None else os.environ.get('DB_NAME')
+settings = Settings()
 
-host: str = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}?retryWrites=true&w=majority"
+host: str = f"mongodb+srv://{settings.db_user}:{settings.db_password}@{settings.db_host}/{settings.db_name}?retryWrites=true&w=majority"
 
 class DbContextManager:
     def __init__(self):
