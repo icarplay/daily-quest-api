@@ -6,12 +6,6 @@ from fastapi import APIRouter
 from fastapi import Depends
 from typing import List
 
-# from core.settings import Settings
-
-# settings = Settings()
-# exemplo de uso settings:  
-# str(settings.model_dump()['env'])
-
 user_routes = APIRouter()
 user_service = UserService()
 
